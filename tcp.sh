@@ -891,11 +891,11 @@ BBR_grub(){
             if [ -f "/boot/grub2/grub.cfg" ]; then
 				grub2-mkconfig  -o   /boot/grub2/grub.cfg
 				grub2-set-default 0
-	    exit 1
+	    #exit 1
 			elif [ -f "/boot/efi/EFI/centos/grub.cfg" ]; then
 				grub2-mkconfig  -o   /boot/efi/EFI/centos/grub.cfg
 				grub2-set-default 0
-				exit 1
+				#exit 1
 			else
 				echo -e "${Error} grub.cfg 找不到，请检查."
             fi
@@ -1148,7 +1148,7 @@ check_status(){
 	net_congestion_control=`cat /proc/sys/net/ipv4/tcp_congestion_control | awk '{print $1}'`
 	net_qdisc=`cat /proc/sys/net/core/default_qdisc | awk '{print $1}'`
 	kernel_version_r=`uname -r | awk '{print $1}'`
-	if [[ ${kernel_version_full} = "4.14.168-bbrplus" || ${kernel_version_full} = "4.14.98-bbrplus" || ${kernel_version_full} = "4.14.129-bbrplus" || ${kernel_version_full} = "4.14.160-bbrplus" || ${kernel_version_full} = "4.14.166-bbrplus" || ${kernel_version_full} = "4.14.161-bbrplus" ]]; then
+	if [[ ${kernel_version_full} = "4.14.168-bbrplus" || ${kernel_version_full} = "4.14.98-bbrplus" || ${kernel_version_full} = "4.14.129-bbrplus" || ${kernel_version_full} = "4.14.160-bbrplus" || ${kernel_version_full} = "4.14.166-bbrplus" || ${kernel_version_full} = "4.14.161-bbrplus" || ${kernel_version_full} = "4.14.173-bbrplus" ]]; then
 		kernel_status="BBRplus"
 	elif [[ ${kernel_version} = "3.10.0" || ${kernel_version} = "3.16.0" || ${kernel_version} = "3.2.0" || ${kernel_version} = "4.4.0" || ${kernel_version} = "3.13.0"  || ${kernel_version} = "2.6.32" || ${kernel_version} = "4.9.0" || ${kernel_version} = "4.11.2" ]]; then
 		kernel_status="Lotserver"
